@@ -21,3 +21,51 @@ console.log(x); //> 5.666666666666666
 
 x %= 3;
 console.log(x); //> 2
+
+//Comparison operators
+console.log(31 > 26); //> true
+console.log(31 < 26); //> false
+console.log(31 >= 26); //> true
+console.log(31 <= 26); //> false
+console.log(31 == 26); //> false
+console.log(31!= 26); //> true
+
+console.log(31 == "31"); //> true
+console.log(31 === "31"); //> a number its not the sane that a string. So this line of code is false.
+
+//Logic operators
+// && AND
+let actualLevel = 4;
+let ultimateLevel = true;
+
+if(actualLevel >= 6 && ultimateLevel) {
+    console.log("This champion can cast his ultimate.")
+} else {
+    console.log("This champion has to wait at least to level 6 to cast his ultimate.")
+}
+
+// || OR
+let level = 5;
+let ultimate = true;
+
+if(level >= 6 || ultimate) {
+    console.log("This champion can cast his ultimate.")
+} else {
+    console.log("This champion has to wait at least to level 6 to cast his ultimate.")
+}
+
+// ! NOT
+let needMana = true;
+
+if(!needMana) {
+    console.log("This champion dont need mana to cast skills")
+} else {
+    console.log("This champion needs mana to cast skills.")
+}
+
+//Hoisting
+console.log(y)
+y = 5; // >Undefined
+
+//Coercion
+console.log(true == 1); //>true
