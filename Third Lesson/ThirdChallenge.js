@@ -84,22 +84,39 @@ function isLeapYear(year) {
 
 function getPetExerciseInfo(type, age) {
     switch (type) {
-        case "perro":
+        case "dog":
             if (age <= 1) {
-                console.log("Los cachorros necesitan pequeñas y frecuentes sesiones de juego");
+                return "Puppies need small, frequent play sessions.";
             }else if (age <= 7) {
-                console.log("Los perros a esta edad necesitan caminatas diarias y sesiones de juego");
+                return "Dogs at this age need daily walks and play sessions.";
             }else if (age > 7) {
-                console.log("Los perros viejos necesitan caminatas más cortas");
-            }else {
-                console.log("El perro no es un cachorro");
+                return "Older dogs need shorter walks.";
+            }
+            break;
+        case "cat":
+            if (age <= 1) {
+                return "Kittens need frequent play sessions.";
+            }else if (age <= 7) {
+                return "Cats at this age need to play daily.";
+            }else if (age > 7) {
+                return "Older cats need shorter play sessions.";
+            }
+            break;
+        case "bird":
+            if (age <= 1) {
+                return "Young birds need a lot of space to fly.";
+            }else if (age <= 7) {
+                return "Birds need daily play and a place to fly.";
+            }else if (age > 7) {
+                return "Older birds need more rest, but still occupy a place to fly.";
             }
             break;
         default:
-            console.log("Tipo de mascota inválida");
+            return "Invalid type of pet.";
     }
 }
 
-getPetExerciseInfo("perro", 1);
-getPetExerciseInfo("perro", 5);
-getPetExerciseInfo("perro", 9);
+console.log(getPetExerciseInfo("dog", 3));
+console.log(getPetExerciseInfo("cat", 8));
+console.log(getPetExerciseInfo("mamut", 25));
+console.log(getPetExerciseInfo("bird", 1));
