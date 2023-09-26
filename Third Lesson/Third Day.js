@@ -73,7 +73,28 @@ for (const element of charactersFirstAct) {
 }
 
 //While example
-let i = 2;
+let i = 1;
 while (i <= 20) {
-    
+    console.log(i);
+    i++;
 }
+
+//Do while
+let a = 1;
+do {
+    console.log(a);
+    a++;
+}while (a <= 20);
+
+//Little triangle example
+function triangle(size, character){
+    const trianglePrint = [];
+    for (let i = 1; i <= size; i++) {
+        let spaces = " ".repeat(size - i);
+        let characters = character.repeat(i);
+        let figure = `${spaces}${characters}`;
+        trianglePrint.push(figure);
+    }
+    return trianglePrint.join("\n");
+}
+console.log(triangle(10, "&"));
