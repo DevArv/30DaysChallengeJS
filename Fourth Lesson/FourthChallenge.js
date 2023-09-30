@@ -47,32 +47,26 @@
 // Output: ["Milo", "Gizmo"]
 
 function findFamousCats(cats) {
-    let maxFollower = 0;
-    let famousCat = null;
+    let influencerCats = {
+        kittyNames: [],
+        maxFollowers: 0,
+    };
 
-    for (const cat of cats) {
-        // Calculate the total of followers for each cat
-        const totalFollower = cat.followers.reduce((total, current) => total + current, 0);
+    for (let i = 0; i < cats.length; i++) {
+        const cat = cats[i];
 
-        //Compare if the actual cat has more followers than the max that have been found
-        if (totalFollower > maxFollower) {
-            maxFollower = totalFollower; // update the max follower
-            famousCat = cat; // update the famous cat
+        const totalFollowers = cat.followers.reduce(
+            (total, current) => total + current, 0);
+
+        if (totalFollowers === influencerCats.maxFollowers) {
+        influencerCats.kittyNames.push(cat.name);
+        }
+
+        if (totalFollowers > influencerCats.maxFollowers) {
+        influencerCats.maxFollowers = totalFollowers;
+        influencerCats.kittyNames = [];
+        influencerCats.kittyNames.push(cat.name);
         }
     }
-    return famousCat;
-}
-
-const cats = [
-    { name: "Salem", followers: [102, 301, 700] },
-    { name: "Sunshine", followers: [230, 180, 420] },
-    { name: "Snow", followers: [20, 50, 190] }
-];
-
-const catWithMostFollowers = findFamousCats(cats);
-
-if (catWithMostFollowers){
-console.log(`The cat with most followers is: ${catWithMostFollowers.name}`);
-} else {
-    console.log(`Cat not found`);
+    return influencerCats.kittyNames;
 }

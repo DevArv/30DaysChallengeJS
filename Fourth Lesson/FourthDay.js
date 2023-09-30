@@ -18,3 +18,39 @@ const localPrice = price.reduce(function(tax, price) {
     return tax + price;
 }, 0);
 console.log(localPrice); //> 5.9
+
+//Additional example of the first challenge in the fourth day.
+
+const championLeague = [
+    {name: "Shaco", Damage: [240, 309]},
+    {name: "Maokai", Damage: [190, 285]},
+    {name: "Morgana", Damage: [308, 201]},
+];
+
+function findMaxDamage(championLeague) {
+    let maxDamageChampion = {
+        name: [],
+        maxDamage: 0,
+    };
+
+    for (let i = 0; i < championLeague.length; i++) {
+        const champion = championLeague[i];
+
+        const totalDamage = champion.Damage.reduce(
+            (total, current) => total + current, 0);
+        
+        if (totalDamage === maxDamageChampion.maxDamage) {
+        maxDamageChampion.name.push(champion.name);
+        }
+
+        if (totalDamage > maxDamageChampion.maxDamage) {
+        maxDamageChampion.maxDamage = totalDamage;
+        maxDamageChampion.name = [];
+        maxDamageChampion.name.push(champion.name);
+        }
+    }
+    return maxDamageChampion.name;
+}
+
+const maxDamageChampionName = findMaxDamage(championLeague);
+console.log("The champion with the highest damage is:", maxDamageChampionName);
