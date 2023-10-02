@@ -90,3 +90,47 @@ function findMaxSteps(stepsWeek) {
 
 const maxStepsUserName = findMaxSteps(stepsWeek);
 console.log("The user with the highest steps is:", maxStepsUserName);
+
+//Objets example 1.
+const pokemon = {
+    name: "Gengar",
+    type: "Ghost",
+    health: 130,
+    attack: 110,
+    specialAttack: 220,
+    defense: 90,
+    specialDefense: 190,
+}
+
+console.log(pokemon.name); //> Gengar
+
+//Objets example 2.
+const cellphone = {
+    brand:  "Iphone",
+    serie: "8 plus",
+    color: "white",
+    storage: "64 GB",
+    details: {
+        camara: "12 MP",
+        ram: "4 GB",
+        battery: "3000 mAh",
+    },
+    sellDetails: {
+        comments: "Its in a great condition.",
+        price: 6000,
+        available: true,
+    }
+}
+
+console.log(cellphone.details);
+console.log(cellphone.sellDetails);
+
+//Objets example 3.
+let sms = {
+    company: "Claro",
+    send: function () {
+        console.log("SMS sent");
+    }
+}
+
+sms.send(); //> SMS sent
