@@ -134,3 +134,60 @@ let sms = {
 }
 
 sms.send(); //> SMS sent
+
+//Example (1) of the second challenge in the fourth day.
+/**
+ * Arreglo de objetos que representa a los estudiantes y sus calificaciones.
+ * Cada objeto tiene una propiedad 'name' (nombre) que almacena el nombre del estudiante
+ * y una propiedad 'grades' (calificaciones) que almacena un arreglo de calificaciones numéricas.
+ */
+const studentsName = [
+    {name: "Alex", grades: [92, 88, 94]},
+    {name: "Maria", grades: [84, 90, 88]},
+
+];
+/* Funcion que calcula el promedio individual por estudiantes y el promedio global del salon de clase */
+function findAverage(students) {
+    if(!students) {
+        // Calcula el promedio de toda la clase
+
+         // Reducir el arreglo de estudiantes para obtener la suma de todas las calificaciones
+        const totalGrades = studentsName.reduce((total, student) => {
+            return total + student.grades.reduce((sum, grade) => sum + grade, 0);
+        }, 0);
+
+        // Reducir el arreglo de estudiantes para obtener el número total de calificaciones
+        const totalStudents = studentsName.reduce((total, student) => total + student.grades.length, 0);
+
+        // Calcular el promedio de la clase
+        const classAverage = totalGrades / totalStudents;
+
+        // Formatear el resultado con 2 decimales usando toFixed
+        return classAverage.toFixed(2);
+        
+    } else {
+        // Calcula el promedio de un estudiante específico
+
+        // Buscar al estudiante por nombre en el arreglo
+        const student = studentsName.find(student => student.name === students);
+        if (!student) {
+            // Si el estudiante no se encuentra, muestra un mensaje de error y devuelve undefined
+            console.log("Student not found");
+        } else {
+            // Calcula el promedio del estudiante
+
+            // Reducir el arreglo de calificaciones del estudiante para obtener la suma
+            const average = student.grades.reduce ((total, grade) => total + grade, 0) / student.grades.length;
+
+            // Formatear el resultado con 2 decimales usando toFixed
+            return average.toFixed(2);
+        }
+    }
+}
+
+// Muestra el promedio de los estudiantes.
+console.log(findAverage("Alex"));
+console.log(findAverage("Maria"));
+
+// Muestra el promedio global del salon de clase.
+console.log(findAverage(""));

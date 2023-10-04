@@ -126,23 +126,39 @@ function findFamousCats(cats) {
 //   ]
 // }
 
-const studentsName = [
-    {name: "Pedro", grades: [90, 87, 88, 90]},
-    {name: "Jose", grades: [99, 71, 88, 96]},
-    {name: "Maria", grades: [92, 81, 80, 96]},
+// Definición de estudiantes con sus nombres y calificaciones
+const students = [
+    { name: "Alex", grades: [92, 88, 94, 82] },
+    { name: "Maria", grades: [84, 90, 88, 97] },
 ];
 
-function getStudentAverage(students) {    
-    const student = studentsName.find(student => student.name === students);
+// Función para calcular el promedio de calificaciones de los estudiantes
+function getStudentAverage(students) {
+    // Mapeo de cada estudiante a un objeto que contiene su nombre y promedio de calificaciones
+    const studentsAndAverage = students.map((student) => {
+        // Extracción de las calificaciones del estudiante actual
+        const grades = student.grades;
+        // Cálculo del promedio de calificaciones utilizando la función reduce
+        const average = grades.reduce((total, grade) => total + grade, 0) / grades.length;
+        // Creación de un objeto con el nombre del estudiante y su promedio, redondeado a dos decimales
+        return {
+            name: student.name,
+            average: Number(average.toFixed(2)),
+        };
+    });
+
+    // Cálculo del promedio de toda la clase usando la función reduce
+    const classAverage = studentsAndAverage.reduce((total, student) => total + student.average, 0) / studentsAndAverage.length;
     
-    if (!student) {
-        console.log("Student not found");
-    }else {
-        const average = student.grades.reduce((total, grade) => total + grade, 0) / student.grades.length;
-        return average;
-    }
+    // Creación de un objeto que contiene el promedio de la clase y la información individual de cada estudiante
+    const globalAverage = {
+        classAverage: Number(classAverage.toFixed(2)),
+        students: studentsAndAverage,
+    };
+
+    // Devolución del objeto con el promedio global y los promedios individuales de los estudiantes
+    return globalAverage;
 }
 
-console.log(getStudentAverage("Maria"));
-console.log(getStudentAverage("Jose"));
-console.log(getStudentAverage("Pedro"));
+// Impresión en consola del resultado de la función con los datos de los estudiantes declarados anteriormente
+console.log(getStudentAverage(students));
