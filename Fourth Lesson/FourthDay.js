@@ -191,3 +191,32 @@ console.log(findAverage("Maria"));
 
 // Muestra el promedio global del salon de clase.
 console.log(findAverage(""));
+
+//Example (2) of the second challenge in the fourth day.
+const weekSteps = [
+    { name: "Alex", steps: [1000, 2300] },
+    { name: "Maria", steps: [1200, 2000] },
+    { name: "Pedro", steps: [400, 900] },
+    { name: "Jose", steps: [200, 1460] },
+];
+
+function findWeekSteps (weekSteps) {
+    const weekIndividualSteps = weekSteps.map((weekStep) => {
+        const steps = weekStep.steps;
+        const individualAverage = steps.reduce((total, step) => total + step, 0) / steps.length;
+        return {
+            name: weekStep.name,
+            average: Number(individualAverage.toFixed(2)),
+        };
+    });
+
+    const globalStepsAverage = weekIndividualSteps.reduce((total, weekStep) => total + weekStep.average, 0) / weekIndividualSteps.length;
+
+    const totalStepsAverage = {
+        globalStepsAverage: Number(globalStepsAverage.toFixed(2)),
+        weekSteps: weekIndividualSteps,
+    };
+    return totalStepsAverage;
+};
+
+console.log(findWeekSteps(weekSteps));
