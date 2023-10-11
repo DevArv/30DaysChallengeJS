@@ -19,35 +19,36 @@
 // Output: null
 
 //Palindrome challenge
+// Función para encontrar el palíndromo más largo en una lista de palabras
+function palindromeFinder(words) {
+  // Array para almacenar todos los palíndromos encontrados
+  let palindromes = [];
+  
+  // Variable para almacenar el palíndromo más largo, inicialmente establecido como nulo
+  let longestPalindrome = null;
 
-const words = [
-    { palindrome: "racecar" },
-    { palindrome: "level" },
-    { palindrome: "world" },
-    { palindrome: "hello" },
-];
-function findLargestPalindrome(words) {
-    let maxPalindrome = "";
-    let lengthPalindrome = 0;
+  // Iterar a través de cada palabra en la lista
+  words.forEach((word) => {
+      // Crear una versión invertida de la palabra actual para verificar si es un palíndromo
+      let palindromeCheck = word.split('').reverse().join('');
 
-    for (const word of words) {
-        const lengthWord = word.palindrome.length;
+      // Si la palabra es un palíndromo, agregarla al array de palíndromos
+      if (word === palindromeCheck) {
+          palindromes.push(word);
 
-        console.log(`Length of ${word.palindrome}: ${lengthWord}`);
+          // Actualizar el palíndromo más largo si es necesario
+          if (!longestPalindrome || word.length > longestPalindrome.length) {
+              longestPalindrome = word;
+          }
+      }
+  });
 
-        if (lengthWord >= lengthPalindrome && word.palindrome !== "") {
-            maxPalindrome = word.palindrome;
-            lengthPalindrome = lengthWord;
-        }
-    }
-
-    if (maxPalindrome == "") {
-        return null;
-    }
-
-    console.log(`Largest Palindrome: ${maxPalindrome}`);
-    return maxPalindrome;
+  // Devolver el palíndromo más largo encontrado (o nulo si no se encontró ninguno)
+  return longestPalindrome;
 }
 
-const result = findLargestPalindrome(words);
-console.log(result);
+// Lista de palabras de ejemplo
+const words = ["Radar", "Salas", "Reconocer"];
+
+// Imprimir el resultado de la función al llamarla con la lista de palabras
+console.log(palindromeFinder(words));

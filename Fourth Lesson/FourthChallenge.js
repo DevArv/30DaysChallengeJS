@@ -162,3 +162,29 @@ function getStudentAverage(students) {
 
 // Impresión en consola del resultado de la función con los datos de los estudiantes declarados anteriormente
 console.log(getStudentAverage(students));
+
+//CheckPoint demo challenge "Palindrome"
+
+function palindromeCheck(words) {
+    let palindromes = [];
+
+    let maxLettersPalindromes = null;
+
+    words.forEach((word) => {
+        let palindromeVerifier = word.split('').reverse().join('');
+
+        if (word === palindromeVerifier) {
+            palindromes.push(word);
+            
+            if (!maxLettersPalindromes || word.length > maxLettersPalindromes.length) {
+                maxLettersPalindromes = word;
+            }
+        }
+
+    });
+
+    return maxLettersPalindromes;
+}
+
+const words = ["Radar", "Casa", "Salas", "Reconocer"];
+console.log(palindromeCheck(words));
