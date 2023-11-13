@@ -74,3 +74,42 @@ console.log(calculator.clear());
 console.log(calculator.add(10));
 console.log(calculator.multiply(2));
 console.log(calculator.divide(3));
+
+// En este desafío debes desarrollar una implementación personalizada del método map utilizando funciones de orden superior.
+
+// Recibirás como parámetros un array y una función (func). El array contendrá un conjunto de elementos (números, objetos, strings, etc.) 
+// y la función se utilizará para aplicar una acción sobre cada elemento del array. 
+// Tu objetivo es devolver un nuevo array con los resultados de la función tal y como lo haría el método map.
+
+// Ejemplo 1:
+
+// Input: myMap([1,2,3,4], (num) => num * 2)
+
+// Output: [2,4,6,8]
+
+// Ejemplo 2:
+
+// Input: myMap([
+//   {name: "michi", age: 2},
+//   {name: "firulais", age: 6}],
+//   (pet) => pet.name)
+
+// Output: ["michi", "firulais"]
+
+function myMap(array, func) {
+    var myArray = [];
+
+    for (var i = 0; i < array.length; i++) {
+        myArray.push(func(array[i]));
+    }
+
+    return myArray;
+}
+
+var petArray = [
+    {name: "michi", age: 2},
+    {name: "firulais", age: 6}
+];
+
+const petNames = myMap(petArray, (pet) => pet.name);
+console.log(petNames);
