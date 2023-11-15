@@ -47,3 +47,5 @@ const halfLevel = championLevel.filter(function(experience){
 });
 
 console.log(halfLevel); //> [8, 12, 10, 14]
+
+//Challenge (2) example.
