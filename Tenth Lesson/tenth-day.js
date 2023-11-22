@@ -82,3 +82,32 @@ function halfNumber (number) {
 halfNumber(10);
 halfNumber(5);
 halfNumber(23);
+
+//Exponientiation operator (**)
+
+function myExponentiation(firstNumber, secondNunber) {
+        this.firstNumber = firstNumber;
+        this.secondNunber = secondNunber;
+    
+    return firstNumber ** secondNunber;
+}
+
+console.log(myExponentiation(2, 3)); //> 8
+console.log(myExponentiation(3, 4)); //> 81
+console.log(myExponentiation(4, 5)); //> 1024
+
+//Trailing commas
+
+const weather = ["Sunny", "Cloudy", "Rainy",];
+console.log(weather); //> [ 'Sunny', 'Cloudy', 'Rainy'
+
+const ocupation = {role: "Developer", yearExperience: 1,};
+console.log(ocupation); //> { role: 'Developer', yearExperience: 1 }
+
+//string.prototype.padStart() y string.prototype.padEnd()
+
+const headphone = "Earbuds";
+const starHeadphones = headphone.padStart(10, "*");
+const endHeadPhones = headphone.padEnd(10, "*");
+console.log(starHeadphones); //> ***Earbuds
+console.log(endHeadPhones); //> Earbuds***
