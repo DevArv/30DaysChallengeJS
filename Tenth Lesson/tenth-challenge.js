@@ -75,31 +75,43 @@
 //     tags: ["shopping", "home"]
 // }]
 
+// Function to create a task planner object
 function createTaskPlanner() {
+    // Array to store tasks
     let tasks = [];
 
+    // Object with task planner methods
     return {
+        // Method to add a task to the planner
         addTask(task) {
+            // Set default value for task completion if not provided
             task.completed = task.completed !== undefined ? task.completed : false;
+            // Add the task to the tasks array
             tasks.push(task);
         },
 
+        // Method to remove a task by id or name
         removeTask(value) {
+            // Filter tasks to remove the specified task by id or name
             tasks = tasks.filter(task => task.id !== value && task.name !== value);
         },
 
+        // Method to get all tasks
         getTasks() {
             return tasks;
         },
 
+        // Method to get pending tasks (tasks not completed)
         getPendingTasks() {
             return tasks.filter(task => task.completed === false);
         },
 
+        // Method to get completed tasks
         getCompletedTasks() {
             return tasks.filter(task => task.completed === true);
         },
 
+        // Method to mark a task as completed by id or name
         markTaskAsCompleted(value) {
             tasks.forEach(task => {
                 if (task.id === value || task.name === value) {
@@ -108,24 +120,29 @@ function createTaskPlanner() {
             });
         },
 
+        // Method to get tasks sorted by priority
         getSortedTasksByPriority() {
+            // Create a copy of tasks and sort by priority
             return tasks.slice().sort((a, b) => a.priority - b.priority);
         },
 
+        // Method to filter tasks by tag
         filterTasksByTag(tag) {
             return tasks.filter(task => task.tags.includes(tag));
         },
 
+        // Method to update a task by id with provided updates
         updateTask(taskId, updates) {
             tasks.forEach(task => {
                 if (task.id === taskId) {
+                    // Update task properties with provided updates
                     Object.assign(task, updates);
                 }
             });
         }
-        
     };
 };
+
 
 let planner = new createTaskPlanner();
 planner.addTask({
