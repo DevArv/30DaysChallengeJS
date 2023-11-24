@@ -76,38 +76,87 @@
 // }]
 
 function createTaskPlanner() {
-    let task = [];
+    let tasks = [];
 
     return {
-    addTask(task) {
-        task.id = id;
-        task.name = name;
-        task.priority = priority;
-        task.tags = tags;
-        task.completed = false;
-
-        task.push(task);
+        addTask(task) {
+            task.completed = task.completed !== undefined ? task.completed : false;
+            tasks.push(task);
         },
 
-        removeTask(task) {
-            for (let i = 0; i < task.length; i++) {
-                if (task[i].id === id || task[i].name === name) {
-                    task.splice(i, 1);
-                }
-            }
+        removeTask(value) {
+            tasks = tasks.filter(task => task.id !== value && task.name !== value);
         },
 
         getTasks() {
-            return task;
-        }
+            return tasks;
+        },
 
-    }
+        getPendingTasks() {
+            return tasks.filter(task => task.completed === false);
+        },
+
+        getCompletedTasks() {
+            return tasks.filter(task => task.completed === true);
+        },
+
+        markTaskAsCompleted(value) {
+            tasks.forEach(task => {
+                if (task.id === value || task.name === value) {
+                    task.completed = true;
+                }
+            });
+        },
+
+        getSortedTasksByPriority() {
+            return tasks.slice().sort((a, b) => a.priority - b.priority);
+        },
+
+        filterTasksByTag(tag) {
+            return tasks.filter(task => task.tags.includes(tag));
+        },
+
+        updateTask(taskId, updates) {
+            tasks.forEach(task => {
+                if (task.id === taskId) {
+                    Object.assign(task, updates);
+                }
+            });
+        }
+        
+    };
 };
 
-const planner = createTaskPlanner();
+let planner = new createTaskPlanner();
 planner.addTask({
     id: 1,
-    name: "Comprar leche",
+    name: "I need to send an Email to my work teamates",
+    priority: 3,
+    tags: ["work"],
+    completed: false
+}),
+planner.addTask(
+{
+    id: 2,
+    name: "Meeting with a customer",
     priority: 1,
-    tags: ["shopping", "home"]
+    tags: ["meeting"],
+    completed: false
+}),
+planner.addTask({
+    id: 3,
+    name: "New upgrade to my To do app",
+    priority: 3,
+    tags: ["upgrade"],
+    completed: true
 });
+
+// console.log(planner.removeTask());
+// console.log(planner.getPendingTasks());
+// console.log(planner.getCompletedTasks());
+// console.log(planner.markTaskAsCompleted(1));
+// console.log(planner.filterTasksByTag("work"));
+// console.log(planner.getTasks());
+// console.log(planner.getSortedTasksByPriority());
+// console.log(planner.updateTask(3, { priority: 1}));
+// console.log(planner.getTasks());
