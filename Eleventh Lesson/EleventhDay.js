@@ -33,6 +33,8 @@ setInterval(() => {
     console.log('Has passed 2 seconds');
 }, 2000);
 
+//new functions with setTimeOut
+//Example (1)
 function waitTimer (milliseconds) {
     return new Promise ((resolve, reject) => {
         setTimeout(() => {
@@ -45,3 +47,24 @@ function waitTimer (milliseconds) {
 waitTimer(5000).then((result) => {
     console.log(`The result is: ${result} seconds.`);
 })
+
+//Example (2)
+function waitTimer (milliseconds) {
+    return new Promise ((resolve, reject) => {
+        if (milliseconds < 0) {
+            reject(new Error('The promise dont accept negative numbers'));
+        } else {
+        setTimeout(() => {
+            const SECONDS = milliseconds / 1000;
+            resolve(SECONDS);
+        }, milliseconds)}
+    });
+}
+
+waitTimer(-5000)
+.then((result) => {
+    console.log(`The result is: ${result} seconds.`);
+})
+.catch((error) => {
+    console.error(error.mesage);
+});
