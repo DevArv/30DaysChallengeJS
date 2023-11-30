@@ -66,5 +66,5 @@ waitTimer(-5000)
     console.log(`The result is: ${result} seconds.`);
 })
 .catch((error) => {
-    console.error(error.mesage);
+    console.error(error.message);
 });
