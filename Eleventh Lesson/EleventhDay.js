@@ -72,16 +72,16 @@ waitTimer(-5000)
 //Function based on the promise challenge
 
 //Whatsapp function
-function sendWhatsappMessage(contact, message) {
+function sendWhatsappMessage(contact, body) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (contact && message) {
-                resolve ( {contact, message} );
+            if (contact && body) {
+                resolve ( {contact, message: body} );
             } else {
                 const INCOMPLETE_DETAILS = [];
 
                 if(!contact) INCOMPLETE_DETAILS.push('contact');
-                if(!message) INCOMPLETE_DETAILS.push('message');
+                if(!body) INCOMPLETE_DETAILS.push('body');
 
                 const ERROR_SEND = (`Error: You need to complete this information to send a message: ${INCOMPLETE_DETAILS.join(', ')}`);
                 reject(new Error(ERROR_SEND));
@@ -90,7 +90,7 @@ function sendWhatsappMessage(contact, message) {
     })
 }
 
-sendWhatsappMessage({ contact: "1-809-789-0707" }, { message: "You have everthing to make your decision"})
+sendWhatsappMessage(null, "You have everthing to make your decision")
 .then((result) => {
     console.log(result);
 })
