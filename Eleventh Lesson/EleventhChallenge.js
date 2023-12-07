@@ -146,9 +146,9 @@ function runCode() {
 }
 
 runCode()
-    .then(result => {
-        console.log(result);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+.then(result => {
+    console.log(result);
+})
+.catch(error => {
+    console.error(error);
+});
