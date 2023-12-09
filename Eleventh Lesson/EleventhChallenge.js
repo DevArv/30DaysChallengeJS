@@ -128,20 +128,20 @@ sendEmail("Hi, good luck with this challenge", "You can do it!", "Training Java"
 
 import { doTask1, doTask2, doTask3 } from './TasksChallenge.js';
 function runCode() {
-    const strings = [];
+    const STRINGS = [];
   
     return doTask1()
         .then(resultTask1 => {
-        strings.push(resultTask1);
+        STRINGS.push(resultTask1);
         return doTask2();
     })
     .then(resultTask2 => {
-        strings.push(resultTask2);
+        STRINGS.push(resultTask2);
         return doTask3();
     })
     .then(resultTask3 => {
-        strings.push(resultTask3);
-        return strings;
+        STRINGS.push(resultTask3);
+        return STRINGS;
     })
 }
 
