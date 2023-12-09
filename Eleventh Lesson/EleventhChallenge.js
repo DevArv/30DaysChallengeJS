@@ -78,7 +78,7 @@ function sendEmail(email, subject, body) {
     });
 }
 
-sendEmail("Hi, good luck with this challenge", "You can do it!")
+sendEmail("Hi, good luck with this challenge", "You can do it!", "Training Java")
 .then((result) => {
     console.log(result);
 })
