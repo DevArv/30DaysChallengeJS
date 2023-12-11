@@ -78,7 +78,7 @@ function sendEmail(email, subject, body) {
     });
 }
 
-sendEmail("Hi, good luck with this challenge", "You can do it!", "Training Java")
+sendEmail("prueba@prueba.com", "You can do it!", "Training Java")
 .then((result) => {
     console.log(result);
 })
@@ -126,29 +126,45 @@ sendEmail("Hi, good luck with this challenge", "You can do it!", "Training Java"
 // }
 
 
-import { doTask1, doTask2, doTask3 } from './TasksChallenge.js';
-function runCode() {
-    const STRINGS = [];
+// import { doTask1, doTask2, doTask3 } from './TasksChallenge.js';
+// function runCode() {
+//     const STRINGS = [];
   
-    return doTask1()
-        .then(resultTask1 => {
-        STRINGS.push(resultTask1);
-        return doTask2();
-    })
-    .then(resultTask2 => {
-        STRINGS.push(resultTask2);
-        return doTask3();
-    })
-    .then(resultTask3 => {
-        STRINGS.push(resultTask3);
-        return STRINGS;
-    })
+//     return doTask1()
+//         .then(resultTask1 => {
+//         STRINGS.push(resultTask1);
+//         return doTask2();
+//     })
+//     .then(resultTask2 => {
+//         STRINGS.push(resultTask2);
+//         return doTask3();
+//     })
+//     .then(resultTask3 => {
+//         STRINGS.push(resultTask3);
+//         return STRINGS;
+//     })
+// }
+
+// runCode()
+// .then(result => {
+//     console.log(result);
+// })
+// .catch(error => {
+//     console.error(error);
+// });
+
+//3rd challenge, async/await
+
+import { doTask1, doTask2, doTask3 } from './TasksChallenge.js';
+
+async function runCode() {
+    const STRINGS = [];
+
+    STRINGS.push(await doTask1());
+    STRINGS.push(await doTask2());
+    STRINGS.push(await doTask3());
+
+    return STRINGS;
 }
 
-runCode()
-.then(result => {
-    console.log(result);
-})
-.catch(error => {
-    console.error(error);
-});
+console.log(runCode());
