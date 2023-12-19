@@ -98,3 +98,50 @@ console.log(matrix);
 
  console.log(triangle);
  //output: [ [ [ 0, 1, 2 ], [ 1, 2, 3 ], [ 2, 3, 4 ] ], [ [ 1, 2, 3 ], [ 2, 3, 4 ], [ 3, 4, 5 ] ], [ [ 2, 3, 4 ], [ 3, 4, 5 ], [ 4, 5, 6 ] ] ]
+
+ //Methods of Arrays: Every, find and findIndex
+
+ //every()
+ const AGE_STUDENTS = [10, 15, 12, 20]
+ const IS_AGE_EQUAL_TO = AGE_STUDENTS.every(function(age) {
+    return age === 10;
+ });
+
+ console.log(IS_AGE_EQUAL_TO);
+ //output: false
+
+ //every with function arrow
+ const IS_AGE_EQUAL_TO_ARROW = AGE_STUDENTS.every(age => age === 10);
+ console.log(IS_AGE_EQUAL_TO_ARROW);
+ //output: false
+
+ //every with objects
+ const FIND_AGE = [{age: 10}, {age: 15}, {age: 12}, {name: 'Niko'}];
+ const ALL_HAVE_AGE = FIND_AGE.every(function(result){
+    return result.hasOwnProperty('age');
+ });
+
+ console.log(ALL_HAVE_AGE);
+ //output: false
+
+ //find()
+ const NUMBERS = [10, 20, 30, 40];
+ const IS_THIS_NUMBER = NUMBERS.find(number => number === 50);
+ console.log(IS_THIS_NUMBER);
+ //output: undefined
+
+ //find() in objects
+ const AGE_DOGS = [
+    {name: 'Tobie', age: 4},
+    {name: 'Tito', age: 3},
+    {name: 'Katy', age: 5}
+ ];
+
+ const RESULT = AGE_DOGS.find(dog => dog.age < 4);
+ console.log(RESULT);
+ //output: { name: 'Tito', age: 3 }
+
+ //findIndex()
+ const IS_THIS_AGE = AGE_DOGS.findIndex(dog => dog.age < 5);
+ console.log(IS_THIS_AGE);
+ //output: 0
