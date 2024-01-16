@@ -144,3 +144,30 @@ function addLevel(array) {
 
 addLevel(MID_CHAMPION, JUNGLER_CHAMPION);
 console.log(MID_CHAMPION, JUNGLER_CHAMPION); // [ { champion: 'Lux', level: 9 }, { champion: 'Talon', level: 8 } ] [ { champion: 'Shaco', level: 6 }, { champion: 'Lilia', level: 5 } ]
+
+// sort()
+// Sorts an array in ascending order
+const teamLevel = [10, 12, 8, 6, 14];
+teamLevel.sort((a, b) => a - b);
+console.log(teamLevel); // [ 6, 8, 10, 12, 14 ]
+
+// Sorts an array in decending order
+const YEARS = [8, 12, 7, 6, 5];
+YEARS.sort((a, b) => b - a);
+console.log(YEARS); // [ 12, 8, 7, 6, 5 ]
+
+// Sort and array of objects
+const petsByAge = [
+    { name: 'Toby', age: 6 },
+    { name: 'Tobbie', age: 14},
+    { name: 'Katy', age: 5 },
+    { name: 'Tito', age: 4}
+];
+petsByAge.sort((a, b) => a.age - b.age);
+console.log(petsByAge);
+/* [
+  { name: 'Tito', age: 4 },
+  { name: 'Katy', age: 5 },
+  { name: 'Toby', age: 6 },
+  { name: 'Tobbie', age: 14 }
+] */
