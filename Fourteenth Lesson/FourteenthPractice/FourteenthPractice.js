@@ -59,3 +59,59 @@ If the gadget's name includes the word 'discount', the gadget's price is reduced
 Then, the price is multiplied by the quantity of the gadget. The quantity property is then deleted from the gadget object. 
 Finally, the function calculates the total price of all gadgets in the array and returns it.
 */
+
+// Practice #3
+// This function takes a list of objects representing iPhones and processes each of them.
+function processIphoneBuy(list) {
+    // Iterate over each 'iphone' object in the list.
+    list.forEach(iphone => {
+        // Check if the iPhone name includes the word 'discount'.
+        if (iphone.name.includes('discount')) {
+            // If so, reduce the iPhone price by 20% (multiply by 0.8).
+            iphone.price = iphone.price * 0.8;
+        }
+
+        // Multiply the iPhone price by the quantity of iPhones purchased.
+        iphone.price = iphone.price * iphone.quantity;
+
+        // Delete the 'quantity' property from the 'iphone' object.
+        delete iphone.quantity;
+    });
+
+    // Calculate the total price by summing up the prices of all iPhones in the list.
+    const TOTAL_IPHONE_PRICE = list.reduce((TOTAL_IPHONE_PRICE, iphone) => TOTAL_IPHONE_PRICE + iphone.price, 0);
+
+    // Return the total price of all iPhones after applying discounts and multiplying by quantity.
+    return TOTAL_IPHONE_PRICE;
+}
+
+
+const IPHONE_INVENTORY = [
+    { name: 'discount Iphone 4', price: 199, quantity: 3 },
+    { name: 'discount Iphone 5', price: 199, quantity: 8 },
+    { name: 'discount Iphone 6', price: 199, quantity: 2 },
+    { name: 'Iphone 7', price: 649, quantity: 5 },
+    { name: 'Iphone 8', price: 699, quantity: 7 }
+];
+
+const IPHONE_RESULT = processIphoneBuy(IPHONE_INVENTORY);
+console.log(IPHONE_RESULT);
+console.log(IPHONE_INVENTORY);
+
+/*
+10207.6
+[
+  { name: 'discount Iphone 4', price: 477.6 },
+  { name: 'discount Iphone 5', price: 1273.6000000000001 },
+  { name: 'discount Iphone 6', price: 318.40000000000003 },
+  { name: 'Iphone 7', price: 3245 },
+  { name: 'Iphone 8', price: 4893 }
+]
+
+This code snippet defines a function called processIphoneBuy that takes in a list of iPhones. 
+It iterates over each iPhone in the list and performs several operations. 
+If the name of an iPhone includes the word 'discount', its price is reduced by 20%. 
+Then, the price of each iPhone is multiplied by its quantity. 
+Finally, the 'quantity' property is deleted from each iPhone. 
+The function calculates the total price of all the iPhones in the list and returns it.
+*/
