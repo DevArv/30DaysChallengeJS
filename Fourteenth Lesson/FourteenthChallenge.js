@@ -120,5 +120,57 @@ Output:
   { name: "product2", price: 20, inStock: false },
 ] */
 
+// Function to sort an array of products based on availability and price
 function sortByAvailabilityAndPrice(products) {
+  // Create a copy of the original array to avoid modifying it directly
+  const ARRAY_PRODUCTS = [...products];
+
+  // Sort the copied array based on availability and then price
+  ARRAY_PRODUCTS.sort((a, b) => {
+    // If product 'a' is in stock and product 'b' is not, prioritize 'a'
+    if (a.inStock && !b.inStock) {
+      return -1;
+    } 
+    // If product 'b' is in stock and product 'a' is not, prioritize 'b'
+    else if (!a.inStock && b.inStock) {
+      return 1;
+    } 
+    // If both products are either in stock or not, prioritize based on price in ascending order
+    else {
+      return a.price - b.price;
+    }
+  });
+
+  // Return the sorted array without modifying the original one
+  return ARRAY_PRODUCTS;
 }
+
+
+const products = [
+  { name: "product1", price: 10, inStock: true },
+  { name: "product2", price: 20, inStock: false },
+  { name: "product3", price: 15, inStock: true },
+  { name: "product4", price: 5, inStock: false },
+];
+
+const ARRAY_PRODUCTS = sortByAvailabilityAndPrice(products);
+console.log(ARRAY_PRODUCTS);
+
+/*
+[
+  { name: 'product1', price: 10, inStock: true },
+  { name: 'product3', price: 15, inStock: true },
+  { name: 'product4', price: 5, inStock: false },
+  { name: 'product2', price: 20, inStock: false }
+]
+
+This code defines a function called sortByAvailabilityAndPrice that takes an array of products as input and returns a new array with the products sorted based on availability and price.
+
+The function creates a copy of the original array to avoid modifying it directly. It then uses the sort method to sort the copied array.
+
+The sorting is done based on the following criteria:
+
+If a product 'a' is in stock and product 'b' is not, 'a' is prioritized and comes before 'b' in the sorted array.
+If product 'b' is in stock and product 'a' is not, 'b' is prioritized and comes before 'a' in the sorted array.
+If both products are either in stock or not, they are prioritized based on price in ascending order.
+The sorted array is returned without modifying the original one. */

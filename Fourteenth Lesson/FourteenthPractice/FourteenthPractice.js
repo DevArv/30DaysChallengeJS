@@ -115,3 +115,40 @@ Then, the price of each iPhone is multiplied by its quantity.
 Finally, the 'quantity' property is deleted from each iPhone. 
 The function calculates the total price of all the iPhones in the list and returns it.
 */
+
+// Practice #4 -> new challenge.
+
+function getHeetAvialability(heets) {
+    const HEETS_INVENTORY = [...heets];
+
+    HEETS_INVENTORY.sort((a, b) => {
+        if (a.inStock && !b.inStock) {
+            return -1;
+        } else if (!a.inStock && b.inStock) {
+            return 1;
+        } else {
+            return a.price - b.price;
+        }
+    });
+
+    return HEETS_INVENTORY;
+}
+
+const HEETS_STOCK = [
+    {name: 'Bronze', price: 4.50, inStock: true},
+    {name: 'Sienna', price: 4.25, inStock: false},
+    {name: 'Blue', price: 4.00, inStock: false},
+    {name: 'Purple', price: 3.75, inStock: true},
+]
+
+const HEETS_INVENTORY = getHeetAvialability(HEETS_STOCK);
+console.log(HEETS_INVENTORY);
+
+/*
+[
+  { name: 'Purple', price: 3.75, inStock: true },
+  { name: 'Bronze', price: 4.5, inStock: true },
+  { name: 'Blue', price: 4, inStock: false },
+  { name: 'Sienna', price: 4.25, inStock: false }
+]
+*/
