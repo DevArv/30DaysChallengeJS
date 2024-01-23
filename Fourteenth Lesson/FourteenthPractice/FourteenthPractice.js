@@ -118,21 +118,28 @@ The function calculates the total price of all the iPhones in the list and retur
 
 // Practice #4 -> new challenge.
 
-function getHeetAvialability(heets) {
+// Definition of a function named getHeetAvailability that takes a parameter 'heets'
+function getHeetAvailability(heets) {
+    // Creating a copy of the 'heets' array using the spread operator (...)
     const HEETS_INVENTORY = [...heets];
 
+    // Sorting the HEETS inventory based on certain criteria
     HEETS_INVENTORY.sort((a, b) => {
+        // Comparison to place in-stock items before out-of-stock items
         if (a.inStock && !b.inStock) {
             return -1;
         } else if (!a.inStock && b.inStock) {
             return 1;
         } else {
+            // If both are in stock or out of stock, sort by ascending price
             return a.price - b.price;
         }
     });
 
+    // Returning the sorted HEETS inventory
     return HEETS_INVENTORY;
 }
+
 
 const HEETS_STOCK = [
     {name: 'Bronze', price: 4.50, inStock: true},
@@ -152,3 +159,66 @@ console.log(HEETS_INVENTORY);
   { name: 'Sienna', price: 4.25, inStock: false }
 ]
 */
+
+// Practice #5 -> Modify a list of shopping items
+function processVegtableList(list) {
+    list.forEach(vegtable => {
+        if (vegtable.name.includes('discount')) {
+            vegtable.price = vegtable.price * 0.8;
+        }
+
+        vegtable.price = vegtable.price * vegtable.quantity;
+
+        delete vegtable.quantity;
+    })
+
+    const TOTAL_VEGTABLE_PRICE = list.reduce((TOTAL_VEGTABLE_PRICE, vegtable) => TOTAL_VEGTABLE_PRICE + vegtable.price, 0);
+    return TOTAL_VEGTABLE_PRICE;
+}
+
+const VEGTABLE_INVENTORY = [
+    { name: 'Tomato', price: '2.00', quantity: 7 },
+    { name: 'Cucumber', price: '1.50', quantity: 5 },
+    { name: 'discount Cabbage', price: '1.00', quantity: 3 },
+    { name: 'Carrot', price: '2.50', quantity: 10 },
+]
+
+const VEGTABLE_RESULT = processVegtableList(VEGTABLE_INVENTORY);
+console.log(VEGTABLE_RESULT);
+console.log(VEGTABLE_INVENTORY);
+
+/* 
+48.9
+[
+  { name: 'Tomato', price: 14 },
+  { name: 'Cucumber', price: 7.5 },
+  { name: 'discount Cabbage', price: 2.4000000000000004 },
+  { name: 'Carrot', price: 25 }
+]
+*/
+
+// Practice # 6 -> Sort the items.
+function sortItems(item) {
+    const ITEM_INVENTORY = [...item];
+
+    ITEM_INVENTORY.sort((a, b) => {
+        if (a.inStock && !b.inStock) {
+            return -1;
+        } else if (!a.inStock && b.inStock) {
+            return 1;
+        } else {
+            a.price - b.price;
+        }
+    });
+    return ITEM_INVENTORY;
+}
+
+const INVENTORY = [
+    { name: 'Iphone 12', price: 400.00, inStock: false },
+    { name: 'Umbrella', price: 8.00, inStock: true },
+    { name: 'Funko', price: 20.00, inStock: false },
+    { name: 'Gaming Keyboard', price: 36.00, inStock: true }
+]
+
+const SORTED_INVENTORY = sortItems(INVENTORY);
+console.log(SORTED_INVENTORY);
