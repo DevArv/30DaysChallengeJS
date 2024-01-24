@@ -121,121 +121,107 @@ Output:
 
 [2, 3, 4, 5, 6, 7, 8, 10] */
 
-// The hotelSystem function is a hotel reservation system generator that manages reservations for a given number of rooms.
-
 function hotelSystem(rooms) {
-  // The reservations variable stores the reservations made.
-  const reservations = [];
+  const RESERVATIONS = [];
 
-  // The searchReservation function searches for a reservation by its ID and returns it if it exists.
   function searchReservation(id) {
-    const index = reservations.findIndex((room) => room.id === id);
+    const INDEX = RESERVATIONS.findIndex((room) => room.id === id);
 
-    if (index > -1) {
-      return reservations[index];
+    if (INDEX > -1) {
+      return RESERVATIONS[INDEX];
     }
-
-    throw new Error("Reservation does not exist");
+    throw new Error("La reservación no fue encontrada");
   }
 
-  // The getSortReservations function returns a copy of reservations sorted by check-in date.
   function getSortReservations() {
-    const copy = [...reservations];
+    const RESERVATIONS_COPY = [...RESERVATIONS];
 
-    copy.sort((a, b) => {
-      const aDate = new Date(`${a.checkIn} ${new Date().getFullYear()}`);
-      const bDate = new Date(`${b.checkIn} ${new Date().getFullYear()}`);
-      return aDate - bDate;
+    RESERVATIONS_COPY.sort((a, b) => {
+      const DATE_A = new Date(`${a.checkIn} ${new Date().getFullYear()}`);
+      const DATE_B = new Date(`${b.checkIn} ${new Date().getFullYear()}`);
+      return DATE_A - DATE_B;
     });
-
-    return copy;
+    return RESERVATIONS_COPY;
   }
 
-  // The addReservation function adds a new reservation if the room is available.
   function addReservation(reservation) {
-    if (!isAvailable(reservation)) {
-      throw new Error("The room is occupied");
+    if(!isRoomAvailable(reservation)) {
+      throw new Error("La habitación no está disponible");
     }
 
-    reservations.push(reservation);
-    return `Reservation for ${reservation.name} was successfully scheduled`;
+    RESERVATIONS.push(reservation);
+    return `Nueva reservación ${reservation.name}`;
   }
 
-  // The removeReservation function removes a reservation by its ID and returns it if it exists.
   function removeReservation(id) {
-    const index = reservations.findIndex((room) => room.id === id);
+    const INDEX = RESERVATIONS.findIndex((room) => room.id === id);
 
-    if (index > -1) {
-      const removedReservation = reservations[index];
-      reservations.splice(index, 1);
-      return removedReservation;
+    if (INDEX > -1) {
+      const REMOVED_RESERVATION = RESERVATIONS[INDEX];
+      RESERVATIONS.splice(INDEX, 1);
+      return REMOVED_RESERVATION;
     }
-
-    throw new Error("Room to be removed does not exist");
+    throw new Error("La reservación que se busca remover no existe");
   }
 
-  // The getReservations function returns all current reservations.
   function getReservations() {
-    return reservations;
+    return RESERVATIONS;
   }
 
-  // The isAvailable function checks if a room is available for a new reservation.
-  function isAvailable(reservation) {
+  function isRoomAvailable(reservation) {
     const checkIn = reservation.checkIn;
     const checkOut = reservation.checkOut;
 
-    for (const currentReservation of reservations) {
-      const currentCheckIn = currentReservation.checkIn;
-      const currentCheckOut = currentReservation.checkOut;
+    for (const CURRENT_RESERVATION of RESERVATIONS) {
+      const CURRENT_CHECK_IN = CURRENT_RESERVATION.checkIn;
+      const CURRENT_CHECK_OUT = CURRENT_RESERVATION.checkOut;
+
 
       if (
-        (checkIn >= currentCheckIn && checkIn < currentCheckOut) ||
-        (checkOut > currentCheckIn && checkOut <= currentCheckOut) ||
-        (checkIn <= currentCheckIn && checkOut >= currentCheckOut)
+        (checkIn >= CURRENT_CHECK_IN && checkIn <CURRENT_CHECK_OUT) ||
+        (checkOut > CURRENT_CHECK_IN && checkOut <= CURRENT_CHECK_OUT) ||
+        (checkIn <= CURRENT_CHECK_IN && checkOut >= CURRENT_CHECK_OUT)
       ) {
-        if (currentReservation.roomNumber === reservation.roomNumber) {
+        if (CURRENT_RESERVATION.roomNumber === reservation.roomNumber) {
           return false;
         }
       }
     }
-
     return true;
   }
 
-  // The getAvailableRooms function returns a list of available rooms for a date range.
   function getAvailableRooms(checkIn, checkOut) {
-    const availableRooms = [];
+    const AVAILABLE_ROOMS = [];
+
 
     for (let i = 1; i <= rooms; i++) {
-      const reservation = { checkIn, checkOut, roomNumber: i };
+      const RESERVATION = { checkIn, checkOut, roomNumber: i };
 
-      if (isAvailable(reservation)) {
-        availableRooms.push(i);
+      if (isRoomAvailable(RESERVATION)) {
+        AVAILABLE_ROOMS.push(i);
       }
     }
-    return availableRooms;
+    return AVAILABLE_ROOMS;;
   }
 
-  // The function returns an object with all available functions to interact with the system.
   return {
     searchReservation,
     getSortReservations,
     addReservation,
     removeReservation,
     getReservations,
-    getAvailableRooms,
-  };
+    getAvailableRooms
+  }
 }
 
+const LUXURY_HOTEL = hotelSystem(10);
 
-const MAIN_HOTEL = hotelSystem(5);
-
-MAIN_HOTEL.addReservation({
+LUXURY_HOTEL.addReservation({
   id: 1,
-  name: 'Alexander',
-  checkIn: '23/01',
-  checkOut: '25/01',
-  roomNumber: 1,
+  name: "Alexander",
+  checkIn: '24/01',
+  checkOut: '28/01',
+  roomNumber: 1
 });
 
-console.log(MAIN_HOTEL.getReservations());
+console.log(LUXURY_HOTEL.getReservations());
