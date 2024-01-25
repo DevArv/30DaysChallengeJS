@@ -145,7 +145,7 @@ function hotelSystem(rooms) {
   }
 
   function addReservation(reservation) {
-    if(!isRoomAvailable(reservation)) {
+    if (!isRoomAvailable(reservation)) {
       throw new Error("La habitación no está disponible");
     }
 
@@ -176,9 +176,8 @@ function hotelSystem(rooms) {
       const CURRENT_CHECK_IN = CURRENT_RESERVATION.checkIn;
       const CURRENT_CHECK_OUT = CURRENT_RESERVATION.checkOut;
 
-
       if (
-        (checkIn >= CURRENT_CHECK_IN && checkIn <CURRENT_CHECK_OUT) ||
+        (checkIn >= CURRENT_CHECK_IN && checkIn < CURRENT_CHECK_OUT) ||
         (checkOut > CURRENT_CHECK_IN && checkOut <= CURRENT_CHECK_OUT) ||
         (checkIn <= CURRENT_CHECK_IN && checkOut >= CURRENT_CHECK_OUT)
       ) {
@@ -193,7 +192,6 @@ function hotelSystem(rooms) {
   function getAvailableRooms(checkIn, checkOut) {
     const AVAILABLE_ROOMS = [];
 
-
     for (let i = 1; i <= rooms; i++) {
       const RESERVATION = { checkIn, checkOut, roomNumber: i };
 
@@ -201,7 +199,7 @@ function hotelSystem(rooms) {
         AVAILABLE_ROOMS.push(i);
       }
     }
-    return AVAILABLE_ROOMS;;
+    return AVAILABLE_ROOMS;
   }
 
   return {
@@ -210,8 +208,8 @@ function hotelSystem(rooms) {
     addReservation,
     removeReservation,
     getReservations,
-    getAvailableRooms
-  }
+    getAvailableRooms,
+  };
 }
 
 const LUXURY_HOTEL = hotelSystem(10);
@@ -219,9 +217,9 @@ const LUXURY_HOTEL = hotelSystem(10);
 LUXURY_HOTEL.addReservation({
   id: 1,
   name: "Alexander",
-  checkIn: '24/01',
-  checkOut: '28/01',
-  roomNumber: 1
+  checkIn: "24/01",
+  checkOut: "28/01",
+  roomNumber: 1,
 });
 
 console.log(LUXURY_HOTEL.getReservations());
