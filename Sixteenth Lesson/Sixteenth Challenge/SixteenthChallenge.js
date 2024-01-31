@@ -39,31 +39,31 @@ protectedDog.owner.name // "Victor" */
 
 // Function to protect a dog object from changes
 function protectDog(dog) {
-    // Create a copy of the original object using Object.assign
-    const PROTECTED_DOG = Object.assign({}, dog);
+  // Create a copy of the original object using Object.assign
+  const PROTECTED_DOG = Object.assign({}, dog);
 
-    // Loop through properties of the copied object
-    for (const prop in PROTECTED_DOG) {
-        // Check if the property is an object (excluding null) and freeze it
-        if (typeof PROTECTED_DOG[prop] === 'object' && PROTECTED_DOG[prop] !== null) {
-            Object.freeze(PROTECTED_DOG[prop]);
-        }
+  // Loop through properties of the copied object
+  for (const prop in PROTECTED_DOG) {
+    // Check if the property is an object (excluding null) and freeze it
+    if (typeof PROTECTED_DOG[prop] === 'object' && PROTECTED_DOG[prop] !== null) {
+      Object.freeze(PROTECTED_DOG[prop]);
     }
+  }
 
-    // Freeze the entire copied object to prevent any further modifications
-    Object.freeze(PROTECTED_DOG);
+  // Freeze the entire copied object to prevent any further modifications
+  Object.freeze(PROTECTED_DOG);
 
-    // Return the protected object
-    return PROTECTED_DOG;
+  // Return the protected object
+  return PROTECTED_DOG;
 }
 
 // Example pet object
 const PET = {
-    name: 'Tobbie',
-    age: 5,
-    owner: { name: 'Nathaly', email: 'test@test.com'},
-    favoriteFood: 'chicken',
-    activities: 'sleep all the day'
+  name: 'Toby',
+  age: 5,
+  owner: { name: 'Nathaly', email: 'test@test.com' },
+  favoriteFood: 'chicken',
+  activities: 'sleep all the day'
 };
 
 // Protect the pet object using the protectDog function
