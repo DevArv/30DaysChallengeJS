@@ -12,17 +12,17 @@ function Iphone() {
 Iphone.prototype = Object.create(Phone.prototype);
 
 
-// const iphone = new Iphone();
-// console.log(iphone.isCharging);
+// const IPHONE = new Iphone();
+// console.log(IPHONE.isCharging);
 
 
 // Iphone.prototype.isCharged = function () { console.log ("Phone is charged"); }
-// const iphone = new Iphone();
-// iphone.isCharged();
+// const IPHONE = new Iphone();
+// IPHONE.isCharged();
 
 Array.prototype.sum = function() { return this.reduce((a, b) => a + b);}
-const numbers = [1, 2, 3, 4, 5];
-console.log(numbers.sum());
+const NUMBERS = [1, 2, 3, 4, 5];
+console.log(NUMBERS.sum());
 
 String.prototype.capitalLetter = function() { return this.toUpperCase(); }
 const ANIMAL = 'dog';
@@ -45,10 +45,10 @@ function Laptop() {
 Laptop.prototype = Object.create(Wifi.prototype);
 
 // Create an instance of Laptop.
-const laptop = new Laptop();
+const LAPTOP = new Laptop();
 
 // Print the value of the isActivated property in the instance of Laptop.
-console.log(laptop.isActivated);
+console.log(LAPTOP.isActivated);
 
 // Defines a constructor function 'Game' with a property 'isPrivate' set to true.
 function Game() {
@@ -68,8 +68,8 @@ Palworld.prototype = Object.create(Game.prototype);
 Palworld.prototype.isLocked = function() { console.log("This server of Palworld is Locked"); }
 
 // Creates an instance of 'Palworld' and calls the 'isLocked' method.
-const palworld = new Palworld();
-palworld.isLocked();
+const PALWORLD = new Palworld();
+PALWORLD.isLocked();
 
 // Extends the prototype of 'Array' with a method 'multiply' that multiplies all elements.
 Array.prototype.multiply = function() { return this.reduce((a, b) => a * b); }
