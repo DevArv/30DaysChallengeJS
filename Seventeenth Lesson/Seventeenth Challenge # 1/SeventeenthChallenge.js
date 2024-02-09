@@ -50,3 +50,28 @@ Output: [
     age: 30,
   },
 ] */
+
+// Define a function called arrayModified
+function arrayModified() {
+  // Extend the Array prototype by adding a custom myFilter method
+  Array.prototype.myFilter = function(callback) {
+    // Create an empty array to store filtered elements
+    const NEW_ARRAY = [];
+    // Iterate through each element of the array
+    for (let i = 0; i < this.length; i++) {
+      // Check if the callback function returns true for the current element
+      if (callback(this[i], i, this)) {
+        // If the callback returns true, push the current element to the new array
+        NEW_ARRAY.push(this[i]);
+      }
+    }
+    // Return the new array containing filtered elements
+    return NEW_ARRAY;
+  }
+}
+
+/* This code defines a custom myFilter method for JavaScript arrays, 
+which filters elements based on a provided callback function. 
+When the myFilter method is called on an array, it iterates through each element 
+and pushes the elements for which the callback function returns true into a new array, 
+which is then returned. */
