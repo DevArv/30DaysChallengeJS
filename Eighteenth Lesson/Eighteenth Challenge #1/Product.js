@@ -54,7 +54,7 @@ Agregando 2 unidades del artículo Libro al carrito
 Agregando el servicio Curso al carrito
 120 */
 
-class Product {
+export class Product {
     constructor(name, price, quantity) {
         this.name = name;
         this.price = price;
@@ -65,16 +65,4 @@ class Product {
             "La lógica de este método debe ser implementada por las clases hijas"
         );
     }
-}
-
-class Article extends Product {
-    // Tu código aquí 👈
-}
-
-class Service extends Product{
-    // Tu código aquí 👈
-}
-
-class Cart extends Product{
-    // Tu código aquí 👈
 }
