@@ -70,3 +70,35 @@ class Price extends Sunglasses {
 
 const SUNGLASSES = new Price(ACCESSORY.brand, ACCESSORY.serie, ACCESSORY.year, 200);
 SUNGLASSES.getProductDetails();
+
+// Encapsulation
+class MaestrySeven {
+    constructor(user, points, role) {
+        this._user = user;
+        this._points = points;
+        this._role = role;
+    }
+
+    earn(amount) {
+        this._points += amount;
+        console.log(`You have ${this._points} points.`);
+    }
+
+    lostPoints(quantity) {
+        if (quantity <= this._points) {
+            this._points -= quantity;
+            console.log(`You have lost ${quantity} points.`);
+        } else {
+            console.log("You don't have enough points to lose.");
+        }
+    }
+
+    getPoints() {
+        return this._points;
+    }
+}
+
+const MAESTRY_SEVEN = new MaestrySeven("GGARiky", 30, "Jungler");
+MAESTRY_SEVEN.earn(20);
+MAESTRY_SEVEN.lostPoints(10);
+console.log(MAESTRY_SEVEN.getPoints());
