@@ -51,14 +51,61 @@ dog.bark()
 Output:
 "woof!" */
 
-export class Animal {
-    // Tu código aquí 👈
+class Animal {
+  constructor(name, age, specie) {
+    this._name = name;
+    this._age = age;
+    this._specie = specie;
+  }
+
+  getInfo() {
+    const ANIMAL_INFO = {
+      name: this._name,
+      age: this._age,
+      specie: this._specie
+    }
+
+    return ANIMAL_INFO;
+  }
 }
-  
-  export class Mammal {
-    // Tu código aquí 👈
+
+class Mammal extends Animal {
+  constructor(name, age, specie, hasFur) {
+    super(name, age, specie)
+    this._hasFur = hasFur;
+  }
+
+  getInfo() {
+    const MAMMAL_INFO = {
+      name: this._name,
+      age: this._age,
+      specie: this._specie,
+      hasFur: this._hasFur
+    }
+
+    return MAMMAL_INFO;
+  }
 }
-  
-  export class Dog {
-    // Tu código aquí 👈
+
+class Dog extends Mammal {
+  constructor(name, age, specie, hasFur, breed) {
+    super(name, age, specie, hasFur)
+    this._breed = breed;
+  }
+
+  getInfo() {
+    const DOG_INFO = {
+      name: this._name,
+      age: this._age,
+      specie: this._specie,
+      hasFur: this._hasFur,
+      breed: this._breed
+    }
+
+    return DOG_INFO;
+  }
+
+  bark() {
+    return "woof!";
+  }
 }
