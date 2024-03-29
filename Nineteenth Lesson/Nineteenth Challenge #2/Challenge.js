@@ -74,62 +74,94 @@ Output:
 // Payment system
 
 
+// Base class for payment handling
 class Pay {
-  constructo(realized, quantity) {
-    this._quantity = quantity;
-    this._realized = realized;
-  }
-  makePay() {
+  // Method that creates an object with 'realized' and 'quantity' properties
+  makePay(quantity) {
     return {
-      realized: this._realized,
-      quantity: this._quantity
-    }
-  }
-}
-
-class Paypal extends Pay {
-  constructor(realized, quantity, email, platform) {
-    super(realized, quantity);
-    this._email = email;
-    this._platform = platform;
-  }
-
-  makePay() {
-    const PAY_INFO = super.makePay();
-    return {
-      ...PAY_INFO,
-      email: this._email,
-      platform: this._platform
-    };
-  }
-}
-
-class Card extends Pay {
-  constructor(realized, quantity, email, platform, cardNumber) {
-    super(realized, quantity, email, platform);
-    this._cardNumber = cardNumber;
-
-    if (cardNumber !== 16) {
-      throw new Error("This card number is invalid.");
-    } else {
-      //TODO
-    }
-  }
-
-  makePay() { }
-}
-
-class Cash extends Pay {
-  makePay() {
-    const PAY_INFO = super.makePay();
-    return {
-      ...PAY_INFO,
-      realized: realized,
+      realized: true,
       quantity: quantity
     }
   }
 }
 
+// Class representing payment via PayPal
+class Paypal extends Pay {
+  // Constructor that initializes the user's email
+  constructor(email) {
+    super();
+    this.email = email;
+  }
+
+  // Method that creates an object with payment properties, including the platform and the user's email
+  makePay(quantity) {
+    return {
+      ...super.makePay(quantity), // Inherits properties from the makePay method of the Pay class
+      platform: "PayPal",
+      email: this.email
+    }
+  }
+}
+
+// Class representing payment via credit card
+class Card extends Pay {
+  // Constructor that initializes the card number
+  constructor(cardNumber) {
+    super();
+    this.cardNumber = cardNumber;
+  }
+
+  // Method that creates an object with payment properties, including the last 4 digits of the card number
+  makePay(quantity) {
+    // Checks if the card number is valid (has 16 digits)
+    if (this.cardNumber.length !== 16) {
+      throw new Error("This card number is invalid.");
+    }
+
+    return {
+      ...super.makePay(quantity), // Inherits properties from the makePay method of the Pay class
+      lastCardNumbers: this.cardNumber.slice(-4) // Gets the last 4 digits of the card number
+    }
+  }
+}
+
+// Class representing cash payment
+class Cash extends Pay {
+  // Method that creates an object with payment properties inherited from the Pay class
+  makePay(quantity) {
+    return super.makePay(quantity);
+  }
+}
+
+// Function that processes the payment using the specified payment method
 function processPay(method, quantity) {
   return method.makePay(quantity);
 }
+
+// Testing the Pay class
+const paymentObject = new Pay().makePay(100);
+console.log(paymentObject); // Output: { realized: true, quantity: 100 }
+
+// Testing the Paypal class
+const paypalPayment = new Paypal('john@example.com').makePay(200);
+console.log(paypalPayment); // Output: { realized: true, quantity: 200, platform: 'PayPal', email: 'john@example.com' }
+
+// Testing the Card class with a valid card number
+const validCardPayment = new Card('1234567890123456').makePay(300);
+console.log(validCardPayment); // Output: { realized: true, quantity: 300, lastCardNumbers: '3456' }
+
+// Testing the Card class with an invalid card number
+try {
+  const invalidCardPayment = new Card('123').makePay(400);
+} catch (error) {
+  console.log(error.message); // Output: "This card number is invalid."
+}
+
+// Testing the Cash class
+const cashPayment = new Cash().makePay(500);
+console.log(cashPayment); // Output: { realized: true, quantity: 500 }
+
+// Testing the processPay function
+console.log(processPay(new Paypal('jane@example.com'), 600)); // Output: { realized: true, quantity: 600, platform: 'PayPal', email: 'jane@example.com' }
+console.log(processPay(new Card('1234567890123456'), 700)); // Output: { realized: true, quantity: 700, lastCardNumbers: '3456' }
+console.log(processPay(new Cash(), 800)); // Output: { realized: true, quantity: 800 }
