@@ -75,37 +75,61 @@ Output:
 
 
 class Pay {
-  makePay(quantity) {
+  constructo(realized, quantity) {
+    this._quantity = quantity;
+    this._realized = realized;
+  }
+  makePay() {
     return {
-      realized: true,
-      quantity: quantity
+      realized: this._realized,
+      quantity: this._quantity
     }
   }
 }
 
 class Paypal extends Pay {
-    #email;
-    constructor(email) {
-        this.#email =  email;
-    }
+  constructor(realized, quantity, email, platform) {
+    super(realized, quantity);
+    this._email = email;
+    this._platform = platform;
+  }
 
-    makePay(platform) {
-        return {
-            realized: true,
-            quantity: quantity,
-            platform: platform,
-            email: this.#email
-        }
-    }    
+  makePay() {
+    const PAY_INFO = super.makePay();
+    return {
+      ...PAY_INFO,
+      email: this._email,
+      platform: this._platform
+    };
+  }
 }
 
-class Card extends Pay {}
+class Card extends Pay {
+  constructor(realized, quantity, email, platform, cardNumber) {
+    super(realized, quantity, email, platform);
+    this._cardNumber = cardNumber;
 
-class Cash extends Pay {}
+    if (cardNumber !== 16) {
+      throw new Error("This card number is invalid.");
+    } else {
+      //TODO
+    }
+  }
 
-// La clase Card recibirá un número de tarjeta de 16 dígitos. Al momento de acceder al método makePay, 
-// se validará si la tarjeta en cuestión tiene esa longitud. En caso de no tener los 16 dígitos, se debe retornar un error. 
-// En caso contrario, al método que proviene de Pay, se le agregará la propiedad de lastCardNumbers: donde se devolverán los últimos 4 dígitos de la tarjeta.
+  makePay() { }
+}
 
+class Cash extends Pay {
+  makePay() {
+    const PAY_INFO = super.makePay();
+    return {
+      ...PAY_INFO,
+      realized: realized,
+      quantity: quantity
+    }
+  }
+}
 
-function processPay(method, quantity) {}
+function processPay(method, quantity) {
+  return method.makePay(quantity);
+}
