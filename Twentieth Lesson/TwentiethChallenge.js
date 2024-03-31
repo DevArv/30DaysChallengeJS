@@ -18,7 +18,7 @@ incluyendo origin, destination, date y reservedBy (nombre completo del pasajero)
 
 PremiumFlight extenderá de la clase Flight y agregará la propiedad specialService que será un costo adicional al precio del vuelo dentro del método sellTicket(passenger).
 
-EconomicFlightde igual manera, extenderá de la clase Flight y aplicará un descuento del 20% dentro del método sellTicket(passenger) 
+EconomicFlight de igual manera, extenderá de la clase Flight y aplicará un descuento del 20% dentro del método sellTicket(passenger) 
 para los pasajeros con una edad menor a 18 años o mayor a 65 años.
 
 Ejemplo 1
