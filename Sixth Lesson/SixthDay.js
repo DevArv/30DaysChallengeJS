@@ -1,21 +1,21 @@
-//Reassignment
+/* eslint-disable no-unused-vars */
+// Reassignment
 
-let attributeType = 'fire';
-attributeType = 'water';
+let attributeType = 'fire'
+attributeType = 'water'
 
-console.log(attributeType);
+console.log(attributeType)
 
-//Cannot change a declaration when it has been declarated as a constant
+// Cannot change a declaration when it has been declarated as a constant
 // const maxLevel = 18;
 // maxLevel = 19;
 
-
-//Redeclaration
+// Redeclaration
 // let maxHealth = 100;
 // let maxHealth = 200;
 
-var matchType = 'Ranked';
-var matchType = 'Aram';   //> This could work
+const MATCH = 'Ranked'
+const MATCH_TYPE = 'Aram' // > This could work
 
 // 'use strict demo'
 

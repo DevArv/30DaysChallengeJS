@@ -1,5 +1,5 @@
-// En este desafío, debes crear la lógica de la función isLeapYear, que determina si un año es bisiesto o no. 
-//Un año es bisiesto si cumple con las siguientes condiciones:
+// En este desafío, debes crear la lógica de la función isLeapYear, que determina si un año es bisiesto o no.
+// Un año es bisiesto si cumple con las siguientes condiciones:
 
 // Es divisible por 4, pero no por 100.
 // Si es divisible por 100 debe serlo por 400 también.
@@ -22,27 +22,26 @@
 // Input: 1984.25;
 // Output: false;
 
-function isLeapYear(year) {
-    if (year >= 0) {
-        if ((year % 4 === 0 && year % 100 !== 0) || (year % 100 === 0 && year % 400 === 0)){
-        return true;
-        } else {
-        return false;
-        }
+function isLeapYear (year) {
+  if (year >= 0) {
+    if ((year % 4 === 0 && year % 100 !== 0) || (year % 100 === 0 && year % 400 === 0)) {
+      return true
     } else {
-      return false;
+      return false
     }
-    
+  } else {
+    return false
   }
-  
-  console.log(isLeapYear(2000));
-  console.log(isLeapYear(-2024));
-  console.log(isLeapYear(1984.25));
+}
+
+console.log(isLeapYear(2000))
+console.log(isLeapYear(-2024))
+console.log(isLeapYear(1984.25))
 
 // En este desafío recibirás una serie de tipos de mascotas junto con su edad.
 
-// Dependiendo de estos 2 factores tendrás que construir la función llamada getPetExerciseInfo la cual retornará una cadena de texto 
-//con la información necesaria acerca de cuanto ejercicio necesita hacer cada tipo de mascota.
+// Dependiendo de estos 2 factores tendrás que construir la función llamada getPetExerciseInfo la cual retornará una cadena de texto
+// con la información necesaria acerca de cuanto ejercicio necesita hacer cada tipo de mascota.
 
 // La función recibirá las siguientes mascotas:
 
@@ -82,60 +81,60 @@ function isLeapYear(year) {
 // Input: getPetExerciseInfo("Mamut", 25)
 // Output: "Tipo de mascota invalida"
 
-function getPetExerciseInfo(type, age) {
-    switch (type) {
-        case "dog":
-            if (age <= 1) {
-                return "Puppies need small, frequent play sessions.";
-            }else if (age <= 7) {
-                return "Dogs at this age need daily walks and play sessions.";
-            }else if (age > 7) {
-                return "Older dogs need shorter walks.";
-            }
-            break;
-        case "cat":
-            if (age <= 1) {
-                return "Kittens need frequent play sessions.";
-            }else if (age <= 7) {
-                return "Cats at this age need to play daily.";
-            }else if (age > 7) {
-                return "Older cats need shorter play sessions.";
-            }
-            break;
-        case "bird":
-            if (age <= 1) {
-                return "Young birds need a lot of space to fly.";
-            }else if (age <= 7) {
-                return "Birds need daily play and a place to fly.";
-            }else if (age > 7) {
-                return "Older birds need more rest, but still occupy a place to fly.";
-            }
-            break;
-        default:
-            return "Invalid type of pet.";
-    }
+function getPetExerciseInfo (type, age) {
+  switch (type) {
+    case 'dog':
+      if (age <= 1) {
+        return 'Puppies need small, frequent play sessions.'
+      } else if (age <= 7) {
+        return 'Dogs at this age need daily walks and play sessions.'
+      } else if (age > 7) {
+        return 'Older dogs need shorter walks.'
+      }
+      break
+    case 'cat':
+      if (age <= 1) {
+        return 'Kittens need frequent play sessions.'
+      } else if (age <= 7) {
+        return 'Cats at this age need to play daily.'
+      } else if (age > 7) {
+        return 'Older cats need shorter play sessions.'
+      }
+      break
+    case 'bird':
+      if (age <= 1) {
+        return 'Young birds need a lot of space to fly.'
+      } else if (age <= 7) {
+        return 'Birds need daily play and a place to fly.'
+      } else if (age > 7) {
+        return 'Older birds need more rest, but still occupy a place to fly.'
+      }
+      break
+    default:
+      return 'Invalid type of pet.'
+  }
 }
 
-console.log(getPetExerciseInfo("dog", 3));
-console.log(getPetExerciseInfo("cat", 8));
-console.log(getPetExerciseInfo("mamut", 25));
-console.log(getPetExerciseInfo("bird", 1));
+console.log(getPetExerciseInfo('dog', 3))
+console.log(getPetExerciseInfo('cat', 8))
+console.log(getPetExerciseInfo('mamut', 25))
+console.log(getPetExerciseInfo('bird', 1))
 
-//En este desafío, debes dibujar un triángulo isósceles usando bucles.
+// En este desafío, debes dibujar un triángulo isósceles usando bucles.
 
-//Recibirás dos parámetros: size y character, que definen el tamaño y 
-//el carácter con el que se debe construir el triángulo, respectivamente. 
-//Además, el triángulo debe estar alineado a la derecha, 
-//lo que significa que la columna más derecha del triángulo debe estar en el borde derecho de la consola.
+// Recibirás dos parámetros: size y character, que definen el tamaño y
+// el carácter con el que se debe construir el triángulo, respectivamente.
+// Además, el triángulo debe estar alineado a la derecha,
+// lo que significa que la columna más derecha del triángulo debe estar en el borde derecho de la consola.
 
-//Recuerda que para hacer el salto de línea debes usar "\n", no olvides removerla de la última parte.
+// Recuerda que para hacer el salto de línea debes usar "\n", no olvides removerla de la última parte.
 
-//Tendrás inputs y outputs como los siguientes 👇
+// Tendrás inputs y outputs como los siguientes 👇
 
-//Ejemplo 1:
+// Ejemplo 1:
 
-//Input: printTriangle(5, "*")
-//Output:
+// Input: printTriangle(5, "*")
+// Output:
 //     *
 //    **
 //   ***
@@ -153,16 +152,16 @@ console.log(getPetExerciseInfo("bird", 1));
 //  $$$$$
 // $$$$$$
 
-function printTriangle(size, character) {
-    const triangle = [];
-    for (let i = 1; i <= size; i++) {
-      let spaces = " ".repeat(size - i);
-      let characters = character.repeat(i);
-      let figure = `${spaces}${characters}`;
-      triangle.push(figure);
-    }
-    return triangle.join("\n");
+function printTriangle (size, character) {
+  const triangle = []
+  for (let i = 1; i <= size; i++) {
+    const spaces = ' '.repeat(size - i)
+    const characters = character.repeat(i)
+    const figure = `${spaces}${characters}`
+    triangle.push(figure)
+  }
+  return triangle.join('\n')
 }
 
-console.log(printTriangle(5, "*"));
-console.log(printTriangle(6, "$"));
+console.log(printTriangle(5, '*'))
+console.log(printTriangle(6, '$'))

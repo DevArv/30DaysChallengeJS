@@ -1,4 +1,5 @@
-//First Challenge of the fourth day
+/* eslint-disable no-unused-vars */
+// First Challenge of the fourth day
 
 // En este desafío, debes encontrar al gatito más famoso con base en su número de seguidores.
 
@@ -6,9 +7,9 @@
 
 // name: nombre del gatito.
 // followers: un array de números, donde cada uno representa los seguidores de cada red social.
-// Tu tarea es devolver un array con los nombres de los gatos que tienen solo el mayor número de seguidores. 
-//Si hay dos o más gatos con el mismo número máximo de seguidores, deberás incluirlos en el array de resultado, 
-//manteniendo el orden en el que aparecen en el array de entrada.
+// Tu tarea es devolver un array con los nombres de los gatos que tienen solo el mayor número de seguidores.
+// Si hay dos o más gatos con el mismo número máximo de seguidores, deberás incluirlos en el array de resultado,
+// manteniendo el orden en el que aparecen en el array de entrada.
 
 // Tendrás inputs y outputs como los siguientes 👇
 
@@ -46,45 +47,45 @@
 
 // Output: ["Milo", "Gizmo"]
 
-function findFamousCats(cats) {
-    let influencerCats = {
-        kittyNames: [],
-        maxFollowers: 0,
-    };
+function findFamousCats (cats) {
+  const influencerCats = {
+    kittyNames: [],
+    maxFollowers: 0
+  }
 
-    for (let i = 0; i < cats.length; i++) {
-        const cat = cats[i];
+  for (let i = 0; i < cats.length; i++) {
+    const cat = cats[i]
 
-        const totalFollowers = cat.followers.reduce(
-            (total, current) => total + current, 0);
+    const totalFollowers = cat.followers.reduce(
+      (total, current) => total + current, 0)
 
-        if (totalFollowers === influencerCats.maxFollowers) {
-        influencerCats.kittyNames.push(cat.name);
-        }
-
-        if (totalFollowers > influencerCats.maxFollowers) {
-        influencerCats.maxFollowers = totalFollowers;
-        influencerCats.kittyNames = [];
-        influencerCats.kittyNames.push(cat.name);
-        }
+    if (totalFollowers === influencerCats.maxFollowers) {
+      influencerCats.kittyNames.push(cat.name)
     }
-    return influencerCats.kittyNames;
+
+    if (totalFollowers > influencerCats.maxFollowers) {
+      influencerCats.maxFollowers = totalFollowers
+      influencerCats.kittyNames = []
+      influencerCats.kittyNames.push(cat.name)
+    }
+  }
+  return influencerCats.kittyNames
 }
 
-//Second Challenge of the fourth day
+// Second Challenge of the fourth day
 
-//En este desafío, deberás calcular el promedio general de una clase, así como el promedio individual de cada estudiante.
+// En este desafío, deberás calcular el promedio general de una clase, así como el promedio individual de cada estudiante.
 
 // Para ello, se te proporcionará un array de objetos, cada uno de los cuales representará a un estudiante y tendrá las siguientes propiedades:
 
 // name: El nombre del estudiante
 // grades: Las notas de cada materia del estudiante
-// A partir de esta información, debes retornar un nuevo objeto que tenga la propiedad classAverage 
-//con el promedio de la clase y un array de students con los estudiantes y sus promedios individuales.
+// A partir de esta información, debes retornar un nuevo objeto que tenga la propiedad classAverage
+// con el promedio de la clase y un array de students con los estudiantes y sus promedios individuales.
 
-// Es importante mencionar que los promedios deben ser calculados con precisión y 
-//se deben redondear a dos decimales para que los test pasen sin problema alguno. 
-//Puedes usar el método toFixed() el cual se usa de la siguiente manera 👇
+// Es importante mencionar que los promedios deben ser calculados con precisión y
+// se deben redondear a dos decimales para que los test pasen sin problema alguno.
+// Puedes usar el método toFixed() el cual se usa de la siguiente manera 👇
 
 // const number = 100.32433;
 // number.toFixed(2); // "100.32"
@@ -128,38 +129,37 @@ function findFamousCats(cats) {
 
 // Definición de estudiantes con sus nombres y calificaciones
 const students = [
-    { name: "Alex", grades: [92, 88, 94, 82] },
-    { name: "Maria", grades: [84, 90, 88, 97] },
-];
+  { name: 'Alex', grades: [92, 88, 94, 82] },
+  { name: 'Maria', grades: [84, 90, 88, 97] }
+]
 
 // Función para calcular el promedio de calificaciones de los estudiantes
-function getStudentAverage(students) {
-    // Mapeo de cada estudiante a un objeto que contiene su nombre y promedio de calificaciones
-    const studentsAndAverage = students.map((student) => {
-        // Extracción de las calificaciones del estudiante actual
-        const grades = student.grades;
-        // Cálculo del promedio de calificaciones utilizando la función reduce
-        const average = grades.reduce((total, grade) => total + grade, 0) / grades.length;
-        // Creación de un objeto con el nombre del estudiante y su promedio, redondeado a dos decimales
-        return {
-            name: student.name,
-            average: Number(average.toFixed(2)),
-        };
-    });
+function getStudentAverage (students) {
+  // Mapeo de cada estudiante a un objeto que contiene su nombre y promedio de calificaciones
+  const studentsAndAverage = students.map((student) => {
+    // Extracción de las calificaciones del estudiante actual
+    const grades = student.grades
+    // Cálculo del promedio de calificaciones utilizando la función reduce
+    const average = grades.reduce((total, grade) => total + grade, 0) / grades.length
+    // Creación de un objeto con el nombre del estudiante y su promedio, redondeado a dos decimales
+    return {
+      name: student.name,
+      average: Number(average.toFixed(2))
+    }
+  })
 
-    // Cálculo del promedio de toda la clase usando la función reduce
-    const classAverage = studentsAndAverage.reduce((total, student) => total + student.average, 0) / studentsAndAverage.length;
-    
-    // Creación de un objeto que contiene el promedio de la clase y la información individual de cada estudiante
-    const globalAverage = {
-        classAverage: Number(classAverage.toFixed(2)),
-        students: studentsAndAverage,
-    };
+  // Cálculo del promedio de toda la clase usando la función reduce
+  const classAverage = studentsAndAverage.reduce((total, student) => total + student.average, 0) / studentsAndAverage.length
 
-    // Devolución del objeto con el promedio global y los promedios individuales de los estudiantes
-    return globalAverage;
+  // Creación de un objeto que contiene el promedio de la clase y la información individual de cada estudiante
+  const globalAverage = {
+    classAverage: Number(classAverage.toFixed(2)),
+    students: studentsAndAverage
+  }
+
+  // Devolución del objeto con el promedio global y los promedios individuales de los estudiantes
+  return globalAverage
 }
 
 // Impresión en consola del resultado de la función con los datos de los estudiantes declarados anteriormente
-console.log(getStudentAverage(students));
-  
+console.log(getStudentAverage(students))

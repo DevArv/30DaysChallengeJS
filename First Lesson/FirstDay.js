@@ -1,137 +1,140 @@
-//Variables that can change over time
-var pet = "Cat";
-var tail = true;
+/* eslint-disable no-use-before-define */
+/* eslint-disable symbol-description */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+// Variables that can change over time
+const pet = 'Cat'
+const tail = true
 
-//Constant variables cant change over time
-var paw = 3;
+// Constant variables cant change over time
+const paw = 3
 
-//Declaration
-var car;
-var animal;
+// Declaration
+let car
+let animal
 
-//Initialization
-age = 31;
-nationality = "USA";
+// Initialization
+age = 31
+nationality = 'USA'
 
-//Declaration and initialization
-let age = 31;
+// Declaration and initialization
+let age = 31
 
-//Functions
-function myFuntion(paramether1, paramether2) {
-    //code for this funtion
+// Functions
+function myFuntion (_paramether1, _paramether2) {
+  // code for this funtion
 }
 
-//To call a function
-myFuntion(1, 2);
+// To call a function
+myFuntion(1, 2)
 
-//Use of return in function
-function incentive(a, b) {
-    return a * b;
+// Use of return in function
+function incentive (a, b) {
+  return a * b
 }
 
-let payInventive = incentive(80000, 0.20);
-console.log("The payment for this seller is: " + payInventive);
+const payInventive = incentive(80000, 0.20)
+console.log('The payment for this seller is: ' + payInventive);
 
-//Function Declarations
-//1. Inmediately invoke function expression
+// Function Declarations
+// 1. Inmediately invoke function expression
 (function () {
-    console.log("Hello World");
-}) ();
+  console.log('Hello World')
+})()
 
-//2. Function expression
-let userName = function () { 
-    console.log("Administrator");
+// 2. Function expression
+const userName = function () {
+  console.log('Administrator')
 }
 
-userName();
+userName()
 
-//3. Arrow functions
-let pet = () => console.log("Cat");
+// 3. Arrow functions
+const pet1 = () => console.log('Cat')
 
-pet();
+pet1()
 
-//Brackets
+// Brackets
 const login = {
-    user: "Alexander",
-    password: "<password>",
-    tocken: 9021
+  user: 'Alexander',
+  password: '<password>',
+  tocken: 9021
 }
 
-console.log("User: " + login.user + " password: " + login.password + " tocken: " + login.tocken);
+console.log('User: ' + login.user + ' password: ' + login.password + ' tocken: ' + login.tocken)
 
-//Data types
-//Numbers
-let employee = 23;
-let salary = 3650;
-let currency= 56.95;
-//Scientific notation
-let methers = 1e4; //> 10000
-let methersNegative = 1e-4; //> 0.0001
+// Data types
+// Numbers
+const employee = 23
+const salary = 3650
+const currency = 56.95
+// Scientific notation
+const methers = 1e4 // > 10000
+const methersNegative = 1e-4 // > 0.0001
 
-//String
-const employeeRole = "Developer";
-const timeExperience = 1;
+// String
+const employeeRole = 'Developer'
+const timeExperience = 1
 
-console.log(`The role of this employee is ${employeeRole} and has ${timeExperience} year of experience`);
+console.log(`The role of this employee is ${employeeRole} and has ${timeExperience} year of experience`)
 
-let brand = "Iphone";
+const brand = 'Iphone'
 
-console.log(brand.length); //> 6
-console.log(brand.toUpperCase()); //> IPHONE
-console.log(brand.toLowerCase()); //> iphone
-console.log(brand.substring(0,3)); //> iph
+console.log(brand.length) // > 6
+console.log(brand.toUpperCase()) // > IPHONE
+console.log(brand.toLowerCase()) // > iphone
+console.log(brand.substring(0, 3)) // > iph
 
-//Objects
+// Objects
 const warrior = {
-    name: "Garen",
-    maxLevel: 18,
-    mana: false
+  name: 'Garen',
+  maxLevel: 18,
+  mana: false
 }
 
-console.log(warrior.name); //> Garen
-console.log(warrior.maxLevel); //> 18
-console.log(warrior.mana); //> false
+console.log(warrior.name) // > Garen
+console.log(warrior.maxLevel) // > 18
+console.log(warrior.mana) // > false
 
-//Boolean
-const gravity = true;
-const planetEarth = false;
+// Boolean
+const gravity = true
+const planetEarth = false
 
-//Type of data
-function leagueChampion(champion) {
-
-    return typeof champion;
+// Type of data
+function leagueChampion (champion) {
+  return typeof champion
 }
 
-console.log(leagueChampion("Shaco"), //> String
-            leagueChampion(18), //> Number
-            leagueChampion(false)); //> Boolean
+console.log(leagueChampion('Shaco'), // > String
+  leagueChampion(18), // > Number
+  leagueChampion(false)) // > Boolean
 
-//Null            
-const namaConsume = null;
+// Null
+const namaConsume = null
 
-console.log(namaConsume); //> Null
+console.log(namaConsume) // > Null
 
-//Undefined
-let newChampion;
+// Undefined
+let newChampion
 
-console.log(newChampion); //> undefined
+console.log(newChampion) // > undefined
 
-//Symbol
-let roleLeague = Symbol()
+// Symbol
+const roleLeague = Symbol()
 
 const jungleChampion = {
-    name: "amumu",
-    mana: true,
-    [roleLeague]: "jungle",
-    maxLevel: 18
+  name: 'amumu',
+  mana: true,
+  [roleLeague]: 'jungle',
+  maxLevel: 18
 }
 
-console.log(jungleChampion[roleLeague]); //> jungle
+console.log(jungleChampion[roleLeague]) // > jungle
 
-//BigInt
-const distanceToDestination = 1696249n;
+// BigInt
+const distanceToDestination = 1696249n
 
-console.log(distanceToDestination + 1n); //> 1696250n
-console.log(distanceToDestination - 1n); //> 1696248n
-console.log(distanceToDestination * 2n); //> 3392498n
-console.log(distanceToDestination / 2n); //> 849124n
+console.log(distanceToDestination + 1n) // > 1696250n
+console.log(distanceToDestination - 1n) // > 1696248n
+console.log(distanceToDestination * 2n) // > 3392498n
+console.log(distanceToDestination / 2n) // > 849124n

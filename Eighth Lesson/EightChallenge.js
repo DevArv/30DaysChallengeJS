@@ -33,52 +33,52 @@
 
 // Output: 0
 
-function createCalculator() {
-    let total = 0;
+function createCalculator () {
+  let total = 0
 
-    const calculator = {
-        add: function(number) {
-            total += number;
-            return total;
-        },
-        subtract: function(number) {
-            total -= number;
-            return total;
-        },
-        clear: function() {
-            total = 0;
-            return total;
-        },
-        getTotal: function() {
-            return total;
-        },
-        multiply: function(number) {
-            total *= number;
-            return total;
-        },
-        divide: function(number) {
-            total /= number;
-            return total;
-        }
+  const calculator = {
+    add: function (number) {
+      total += number
+      return total
+    },
+    subtract: function (number) {
+      total -= number
+      return total
+    },
+    clear: function () {
+      total = 0
+      return total
+    },
+    getTotal: function () {
+      return total
+    },
+    multiply: function (number) {
+      total *= number
+      return total
+    },
+    divide: function (number) {
+      total /= number
+      return total
     }
+  }
 
-    return calculator;
+  return calculator
 }
 
-const calculator = createCalculator();
+const calculator = createCalculator()
 
-console.log(calculator.add(5));
-console.log(calculator.subtract(3));
-console.log(calculator.getTotal());
-console.log(calculator.clear());
-console.log(calculator.add(10));
-console.log(calculator.multiply(2));
-console.log(calculator.divide(3));
+console.log(calculator.add(5))
+console.log(calculator.subtract(3))
+console.log(calculator.getTotal())
+console.log(calculator.clear())
+console.log(calculator.add(10))
+console.log(calculator.multiply(2))
+console.log(calculator.divide(3))
 
 // En este desafío debes desarrollar una implementación personalizada del método map utilizando funciones de orden superior.
 
-// Recibirás como parámetros un array y una función (func). El array contendrá un conjunto de elementos (números, objetos, strings, etc.) 
-// y la función se utilizará para aplicar una acción sobre cada elemento del array. 
+// Recibirás como parámetros un array y una función (func). El array contendrá un conjunto de elementos (números, objetos, strings, etc.)
+// y la función se utilizará para aplicar una acción sobre cada elemento del array.
 // Tu objetivo es devolver un nuevo array con los resultados de la función tal y como lo haría el método map.
 
 // Ejemplo 1:
@@ -96,20 +96,20 @@ console.log(calculator.divide(3));
 
 // Output: ["michi", "firulais"]
 
-function myMap(array, func) {
-    var myArray = [];
+function myMap (array, func) {
+  const myArray = []
 
-    for (var i = 0; i < array.length; i++) {
-        myArray.push(func(array[i]));
-    }
+  for (let i = 0; i < array.length; i++) {
+    myArray.push(func(array[i]))
+  }
 
-    return myArray;
+  return myArray
 }
 
-var petArray = [
-    {name: "michi", age: 2},
-    {name: "firulais", age: 6}
-];
+const petArray = [
+  { name: 'michi', age: 2 },
+  { name: 'firulais', age: 6 }
+]
 
-const petNames = myMap(petArray, (pet) => pet.name);
-console.log(petNames);
+const petNames = myMap(petArray, (pet) => pet.name)
+console.log(petNames)
