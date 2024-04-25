@@ -1,5 +1,4 @@
-// Bilder pattern
-
+// Builder pattern
 class EcommerceBuilder {
     constructor() {
         this.name = '';
