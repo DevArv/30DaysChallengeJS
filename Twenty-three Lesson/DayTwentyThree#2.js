@@ -57,7 +57,7 @@ class UpdateCustomerInfo {
     }
 
     notificationUpdate(change) {
-        console.log(`The customer ${this.name} has been updated. New name is: ${change}`);
+        console.log(`The customer ${this.name} has been updated. ${change}`);
     }
 }
 
