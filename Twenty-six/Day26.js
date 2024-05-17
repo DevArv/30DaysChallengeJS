@@ -32,3 +32,35 @@ console.log(set.size); //> 2
 set.clear();
 set.size;
 console.log(set.size); //> 0
+
+// Maps
+
+let map = new Map();
+
+// Add key-value pairs to Map
+map.set("USA", "english");
+map.set("Dominican Republic", "spanish");
+map.set("Italy", "Italian");
+console.log(map); //> Map(3) { 'USA' => 'english', 'Dominican Republic' => 'spanish', 'Italy' => 'Italian' }
+
+// Get the value of a key
+map.get("USA");
+console.log(map.get("USA")); //> english
+
+// Check if a key exists
+map.get("Canada");
+console.log(map.has("Canada")); //> false
+
+// Delete a key-value pair
+map.delete("Dominican Republic");
+console.log(map); //> Map(2) { 'USA' => 'english', 'Italy' => 'Italian' }
+
+// Check if the key exists after being deleted
+console.log(map.has("Dominican Republic")); //> false
+
+// Clear the Map
+map.clear();
+console.log(map); //> Map(0) { }
+
+// Get the size of the Map
+console.log(map.size); //> 0
